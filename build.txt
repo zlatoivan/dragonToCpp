@@ -1,0 +1,5 @@
+// Установить:
+npm install --save-dev parcel
+
+// Запуск:
+npx parcel index.html

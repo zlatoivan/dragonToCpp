@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dragon</title>
+</head>
+<body>
+
+<!--Добавление блока-->
+<label>Добавить или изменить блок:</label> <p></p>
+
+<!--<label>-&#45;&#45;&#45;&#45;</label>-->
+
+<!--<label>Выберите икону кликом ЛКМ</label>  <p></p>-->
+
+<!--Выбор типа блока-->
+<label for="iconTypeSelect">Тип блока</label>
+<select id="iconTypeSelect">
+    <option value="action">Action</option>
+    <option value="question">Question</option>
+    <option value="choice">Choice</option>
+    <option value="case">Case</option>
+    <option value="forOpen">Begin of FOR loop</option>
+    <option value="forClose">End of FOR loop</option>
+</select> <p></p>
+
+<!--Ввод данных блока-->
+<label for="iconDataInput">Введите данные блока</label>
+<input id="iconDataInput" value="qwerty"> <p></p>
+
+<!--Кнопка 'Добавить блок'-->
+<!--<button-->
+<!--    id="addIconBtn">-->
+<!--    Добавить блок-->
+<!--</button> <p></p> <label>-&#45;&#45;&#45;&#45;</label>-->
+
+<button
+    id="changeIconDataBtn">
+    Изменить надпись
+</button>
+
+<button
+    id="deleteIconBtn">
+    Удалить блок
+</button> <p></p>
+
+<!--График-->
+<canvas id="canvas" width="550" height="550"></canvas> <p></p>
+
+<!--Код на C++-->
+<label for="cppProgArea">Код программы на С++ :</label>
+<button id="copyCppProgButton">Скопировать код</button> <p></p>
+<textarea id="cppProgArea" rows="20" cols="45" name="text" readonly></textarea> <!--style="resize: none;"-->
+
+
+<script src="ts/main.ts" type="module"></script>
+
+</body>
+</html>
