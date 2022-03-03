@@ -3,54 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <title>Dragon</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-<!--Добавление блока-->
-<label>Меню:</label> <p></p>
+<div class="inLine">
+    <!--Добавление блока-->
+    <label>Меню:</label> <p></p>
 
-<!--<label>-&#45;&#45;&#45;&#45;</label>-->
+    <!--<label>-&#45;&#45;&#45;&#45;</label>-->
 
-<!--<label>Выберите икону кликом ЛКМ</label>  <p></p>-->
+    <!--Выбор типа блока-->
+    <label for="iconTypeSelect">Тип блока</label>
+    <select id="iconTypeSelect">
+        <option value="action">Action</option>
+        <option value="question">Question</option>
+        <option value="choice">Choice</option>
+        <option value="case">Case</option>
+        <option value="for">For</option>
+    </select> <p></p>
 
-<!--Выбор типа блока-->
-<label for="iconTypeSelect">Тип блока</label>
-<select id="iconTypeSelect">
-    <option value="action">Action</option>
-    <option value="question">Question</option>
-    <option value="choice">Choice</option>
-    <option value="case">Case</option>
-    <option value="for">For</option>
-</select> <p></p>
+    <!--Ввод данных блока-->
+    <label for="iconDataInput">Надпись блока</label>
+    <input id="iconDataInput" value="qwerty"> <p></p>
 
-<!--Ввод данных блока-->
-<label for="iconDataInput">Надпись блока</label>
-<input id="iconDataInput" value="qwerty"> <p></p>
+    <!--Кнопка 'Добавить блок'-->
+    <!--<button-->
+    <!--    id="addIconBtn">-->
+    <!--    Добавить блок-->
+    <!--</button> <p></p> <label>-&#45;&#45;&#45;&#45;</label>-->
 
-<!--Кнопка 'Добавить блок'-->
-<!--<button-->
-<!--    id="addIconBtn">-->
-<!--    Добавить блок-->
-<!--</button> <p></p> <label>-&#45;&#45;&#45;&#45;</label>-->
+    <button id="changeIconDataBtn">
+        Изменить надпись
+    </button>
 
-<button
-    id="changeIconDataBtn">
-    Изменить надпись
-</button>
+    <button id="deleteIconBtn">
+        Удалить блок
+    </button>
+</div>
 
-<button
-    id="deleteIconBtn">
-    Удалить блок
-</button> <p></p>
+<div class="inLine" style="width: 100px"></div>
+
+<div class="inLine">
+    <p>Инструкция:</p>
+    <p>- Добавить блок: Выберие тип и надпись блока в меню; Кликните на синий плюсик ЛКМ</p>
+    <p>- Изменить блок: Кликните на блок ЛКМ; Введите надпись блока в меню; Нажмите 'Изменить надпись'</p>
+    <p>- Удалить блок: Кликните на блок ЛКМ; Кликните 'Удалить блок'</p>
+</div> <p></p>
+
 
 <!--График-->
-<canvas id="canvas" width="600" height="600"></canvas> <p></p>
+<div class="inLine">
+    <canvas id="canvas" width="1000" height="710"></canvas> <p></p>
+</div>
 
 <!--Код на C++-->
-<label for="cppProgArea">Код программы на С++ :</label>
-<button id="copyCppProgButton">Скопировать код</button> <p></p>
-<textarea id="cppProgArea" rows="20" cols="45" name="text" readonly></textarea> <!--style="resize: none;"-->
-
+<div class="inLine">
+    <label for="cppProgArea">Код программы на С++ :</label> <p></p>
+    <!--Кнопка 'Скопировать код'-->
+    <button id="copyCppProgButton">Скопировать код</button>
+    <!--Отступ-->
+    <span class="inLine" style="width: 300px"></span>
+    <!--Чек-бокс-->
+    <button id="programExampleBtn">Пример программы</button> <p></p>
+    <!--Код программы-->
+    <textarea id="cppProgArea" rows="42" cols="70" name="text" readonly></textarea> <!--style="resize: none;"-->
+</div>
 
 <script src="ts/main.ts" type="module"></script>
 

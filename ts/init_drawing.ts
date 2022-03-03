@@ -5,9 +5,9 @@ function clear(ctx, w, h) {
 
 // Холст
 function drawSheet(ctx, w, h, a, b, lDis) {
-    // Квдратик для разметки
-    ctx.fillStyle = "rgba(0, 0, 255, 0.2)";
-    ctx.fillRect(0, 0, 20, 20);
+    // // Квдратик для разметки
+    // ctx.fillStyle = "rgba(0, 0, 255, 0.2)";
+    // ctx.fillRect(0, 0, 20, 20);
 
     // Края холста
     ctx.strokeStyle="rgb(0, 0, 0)"
@@ -32,25 +32,6 @@ function drawSheet(ctx, w, h, a, b, lDis) {
         ctx.stroke();
         ctx.fillText(((a + lDis) * i).toString(), (a + lDis) * i - 17, 10)
     }
-
-
-    // ctx.beginPath()
-    // ctx.moveTo(90, 0)
-    // ctx.lineTo(90, h)
-    // ctx.stroke();
-    // ctx.fillText('90', 90 - 17, 10)
-    //
-    // ctx.beginPath()
-    // ctx.moveTo(360, 0)
-    // ctx.lineTo(360, h)
-    // ctx.stroke();
-    // ctx.fillText('360', 360 - 17, 10)
-    //
-    // ctx.beginPath()
-    // ctx.moveTo(390, 0)
-    // ctx.lineTo(390, h)
-    // ctx.stroke();
-    // ctx.fillText('390', 390 - 17, 10)
 }
 
 // Базовые элементы для начала работы

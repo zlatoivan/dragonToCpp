@@ -2,7 +2,7 @@ import {Program} from "./nodes/Program";
 import {ClickableCasePlus, ClickableIcon, ClickableStandardPlus, getIconTypeSelect} from "./Clickable";
 import {initDrawing} from "./init_drawing";
 import {a, b, dPlus, lDis, x0, y0} from "./consts";
-import {initProgram, initProgramHardcode} from "./init_program";
+import {initProgram, initProgramExample} from "./init_program";
 import {convProgramToCpp} from "./conv_program_to_cpp";
 import {getIconDataInput} from "./Clickable";
 
@@ -11,7 +11,7 @@ const ctx = canvas.getContext('2d')
 const w = canvas.width
 const h = canvas.height
 
-const program = new Program()
+let program = new Program()
 let selectedIcon: ClickableIcon
 export let clickableIcons: Array<ClickableIcon>
 export let clickableStandardPluses: Array<ClickableStandardPlus>
@@ -35,10 +35,19 @@ function drawProgram(ctx) {
         drawStandardPluses(ctx)
 }
 
+
+// Заготовленный пример программы
+const programExample = document.getElementById('programExampleBtn') as HTMLButtonElement
+programExample.onclick = () => {
+    initProgramExample(program)
+    drawProgram(ctx)
+    convProgramToCpp(program, document)
+}
+
+
 export class Editor {
     init() {
-        initProgramHardcode(program)
-        // initProgram(program)
+        initProgram(program)
     }
     run () {
         drawProgram(ctx)
@@ -103,17 +112,17 @@ function getMousePosition(canvas, event) {
     console.log("Coordinate x: " + mx, "Coordinate y: " + my)
 
     // Клик на блок
+    let reached = false
     for (const ci of clickableIcons) {
         const node = ci.body.statements[ci.index].getHeader()
         if (node.x < mx && mx < node.x + a && node.y < my && my < node.y + b) {
             selectedIcon = ci;
-            (document.getElementById('iconDataInput') as HTMLInputElement).value = node.label
+            (document.getElementById('iconDataInput') as HTMLInputElement).value = node.label;
+            reached = true
         }
-        // else { // Неизвестная ошибка // Чтоб не обводить, если кликнули в другое место
-        //     selectedIcon = undefined
-        //     console.log('selectedIcon = undefined')
-        // }
     }
+    if (!reached)
+        selectedIcon = undefined
 
     // Клик на cтандартный плюсик
     for (const cp of clickableStandardPluses) {
