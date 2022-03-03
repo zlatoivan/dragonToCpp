@@ -21,12 +21,12 @@ export class Question extends Node {
         this.y = y
 
         const headerSize = this.header.calc(x, y)
-        const bodyYesSize = this.bodyYes.calc(x,
-            y + headerSize.y + lDis)
+        const bodyYesSize = this.bodyYes.calc(x, y + headerSize.y + lDis)
         if (this.bodyYes.statements.length === 0)
             bodyYesSize.x = headerSize.x
-        const bodyNoSize = this.bodyNo.calc(x + bodyYesSize.x + lDis,
-            y + headerSize.y + lDis)
+        const bodyNoSize = this.bodyNo.calc(x + bodyYesSize.x + lDis, y + headerSize.y + lDis)
+        if (this.bodyNo.statements.length === 0)
+            bodyNoSize.x = headerSize.x
 
         this.top = this.header.top
         this.bottom = {

@@ -36,7 +36,7 @@ function drawProgram(ctx) {
 }
 
 
-// Заготовленный пример программы
+// Заготовленный пример программы. Убрать его - F5
 const programExample = document.getElementById('programExampleBtn') as HTMLButtonElement
 programExample.onclick = () => {
     initProgramExample(program)
