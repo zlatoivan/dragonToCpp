@@ -36,9 +36,9 @@ export function initProgramExample(program: Program    ) {
     const cAction2 = new Action('a == 2;')
     const cAction3 = new Action('a = 3;')
     const cAction4 = new Action('a = 4;')
-    const case1 = new Case('case1;')
-    const case2 = new Case('case2;')
-    const case3 = new Case('c3;')
+    const case1 = new Case('case1')
+    const case2 = new Case('case2')
+    const case3 = new Case('c3')
 
     // case1.body.statements[0].getHeader().label = 'defCase1'
     case1.body.statements.push(cAction1)
