@@ -1,8 +1,13 @@
 import {a, b} from "./consts";
 
 
+export function drawPlus(ctx, x, y, dPlus) {
+    ctx.fillStyle = "rgb(0, 0, 255)";
+    ctx.fillRect(x - dPlus / 2, y - dPlus / 2, dPlus, dPlus)
+}
+
 export function drawLabel(ctx, x, y, a, b, label: string) {
-    ctx.fillText(label, x + 25, y + b / 2)
+    ctx.fillText(label, x + 25, y + b / 2 + 1)
 }
 
 // Овал
@@ -42,6 +47,9 @@ export function drawQuestionIcon(ctx, x, y, a, b) {
     ctx.lineTo(x, y + b / 2);
     ctx.closePath();
     ctx.stroke();
+
+    ctx.fillText('yes', x + 33, y + b + 10)
+    ctx.fillText('no', x + a + 10, y + 13)
 }
 
 // Choice

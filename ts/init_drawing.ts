@@ -7,7 +7,7 @@ function clear(ctx, w, h) {
 function drawSheet(ctx, w, h, a, b, lDis) {
     // Квдратик для разметки
     ctx.fillStyle = "rgba(0, 0, 255, 0.2)";
-    ctx.fillRect (0, 0, 20, 20);
+    ctx.fillRect(0, 0, 20, 20);
 
     // Края холста
     ctx.strokeStyle="rgb(0, 0, 0)"

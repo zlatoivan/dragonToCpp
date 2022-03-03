@@ -1,7 +1,7 @@
 import {addTabs, headerInterface, Node, Point} from "./Node";
-import {QuestionHeader} from "./SimpleIcons";
+import {Action, QuestionHeader} from "./SimpleIcons";
 import {Body} from "./Body";
-import {drawLineBetween, drawLineDL, drawLineRD} from "../drawing";
+import {drawLineBetween, drawLineDL, drawLineRD} from "../drawing_simple";
 import {a, lDis} from "../consts";
 
 
@@ -9,11 +9,12 @@ export class Question extends Node {
     header: QuestionHeader
     bodyYes: Body
     bodyNo: Body
-    constructor() {
+    constructor(data: string) {
         super()
-        this.header = new QuestionHeader()
+        this.header = new QuestionHeader(data)
         this.bodyYes = new Body()
         this.bodyNo = new Body()
+        // this.bodyNo.statements.push(new Action('---'))
     }
     calc(x: number, y: number): Point {
         this.x = x

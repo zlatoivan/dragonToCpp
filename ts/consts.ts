@@ -3,6 +3,7 @@ export const b = 30
 export const lDis = 30 // Длина линии вниз
 export const x0 = a / 2 + lDis
 export const y0 = 10
+export const dPlus = 11 // Ширина плюса
 
 export const iostream = '<iostream>'
 

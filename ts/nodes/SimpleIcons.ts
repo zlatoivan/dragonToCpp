@@ -7,12 +7,16 @@ import {
     drawLabel,
     drawQuestionIcon,
     drawTitleIcon
-} from "../drawing";
+} from "../drawing_simple";
 import {a, b, begin, end} from "../consts";
 
 
 class SimpleIcon extends Node {
     label: string
+    constructor(data: string) {
+        super()
+        this.label = data
+    }
     convToCpp() {
         return this.label
     }
@@ -22,10 +26,6 @@ class SimpleIcon extends Node {
 }
 
 export class Title extends SimpleIcon {
-    constructor(s: string) {
-        super();
-        this.label = s
-    }
     draw(ctx) {
         drawTitleIcon(ctx, this.x, this.y, a, b)
         drawLabel(ctx, this.x, this.y, a, b, this.label)
@@ -36,10 +36,6 @@ export class Title extends SimpleIcon {
 }
 
 export class End extends SimpleIcon {
-    constructor(s: string) {
-        super();
-        this.label = s
-    }
     draw(ctx) {
         drawEndIcon(ctx, this.x, this.y, a, b)
         drawLabel(ctx, this.x, this.y, a, b, this.label)
@@ -50,10 +46,6 @@ export class End extends SimpleIcon {
 }
 
 export class Action extends SimpleIcon {
-    constructor(s: string) {
-        super();
-        this.label = s
-    }
     draw(ctx) {
         drawActionIcon(ctx, this.x, this.y, a, b)
         drawLabel(ctx, this.x, this.y, a, b, this.label)

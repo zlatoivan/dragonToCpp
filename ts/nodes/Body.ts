@@ -1,8 +1,8 @@
 import {Node, Point} from "./Node";
-import {clickableElements} from "../main";
-import {drawLineBetween} from "../drawing";
+import {drawLineBetween} from "../drawing_simple";
 import {a, lDis} from "../consts";
-import {ClickableIcon} from "../Clickable";
+import {ClickableIcon, ClickableStandardPlus} from "../Clickable";
+import {clickableIcons, clickableStandardPluses} from "../Editor";
 
 export class Body extends Node { // - всегда прямая линия
     statements: Array<Node> // выражения (группы блоков)
@@ -17,6 +17,7 @@ export class Body extends Node { // - всегда прямая линия
         this.y = y
         let prevOffsetY = 0
         let maxX = 0
+        // this.statements.forEach((x) => x.calc())
         for (const s of this.statements) {
             const stateSize = s.calc(x, y + prevOffsetY)
             prevOffsetY = prevOffsetY + stateSize.y + lDis
@@ -36,13 +37,18 @@ export class Body extends Node { // - всегда прямая линия
     }
 
     draw(ctx) {
-        // this.statements.forEach((x) => x.draw())
-        // for (const s of this.statements) {
+        if (this.statements.length === 0)
+            clickableStandardPluses.push(new ClickableStandardPlus(this, 0, 'top'))
         for (let i = 0; i < this.statements.length; i++) {
             this.statements[i].draw(ctx)
             if (i > 0)
                 drawLineBetween(ctx, this.statements[i - 1].bottom, this.statements[i].top)
-            clickableElements.push(new ClickableIcon(this, i))
+            clickableIcons.push(new ClickableIcon(this, i))
+            clickableStandardPluses.push(new ClickableStandardPlus(this, i, 'top'))
+            const nodeName = this.statements[i].constructor.name
+            if (nodeName !== 'Question' && nodeName !== 'Choice') {
+                clickableStandardPluses.push(new ClickableStandardPlus(this, i, 'bottom'))
+            }
         }
     }
 

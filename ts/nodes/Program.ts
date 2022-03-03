@@ -2,7 +2,7 @@ import {addTabs, Node, Point} from "./Node";
 import {End, Title} from "./SimpleIcons";
 import {lDis} from "../consts";
 import {Body} from "./Body";
-import {drawLineBetween} from "../drawing";
+import {drawLineBetween} from "../drawing_simple";
 
 export class Program extends Node {
     title: Title // Объект класса Title

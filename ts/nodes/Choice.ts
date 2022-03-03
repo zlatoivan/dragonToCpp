@@ -1,17 +1,19 @@
-import {addTabs, Node, Point} from "./Node";
-import {CaseHeader, Switch} from "./SimpleIcons";
+import {addTabs, headerInterface, Node, Point} from "./Node";
+import {Action, CaseHeader, Switch} from "./SimpleIcons";
 import {Body} from "./Body";
-import {clickableElements} from "../main";
-import {drawLine, drawLineBetween, drawLineDL} from "../drawing";
+import {drawLine, drawLineBetween, drawLineDL} from "../drawing_simple";
 import {a, b, lDis} from "../consts";
+import {clickableCasePluses} from "../Editor";
+import {ClickableCasePlus} from "../Clickable";
 
 export class Case extends Node {
     header: CaseHeader
     body: Body
-    constructor() {
+    constructor(data: string) {
         super()
-        this.header = new CaseHeader()
+        this.header = new CaseHeader(data)
         this.body = new Body()
+        // this.body.statements.push(new Action('defActionCase'))
     }
     calc(x: number, y: number): Point {
         this.x = x
@@ -35,6 +37,7 @@ export class Case extends Node {
         this.header.draw(ctx)
         this.body.draw(ctx)
         drawLineBetween(ctx, this.header.bottom, this.body.top)
+        // clickableIcons.push(new ClickableIcon(this))
     }
 
     convToCpp() {
@@ -42,22 +45,25 @@ export class Case extends Node {
                     addTabs(this.body.convToCpp()) +
                     addTabs('break;\n')
     }
+
+    getHeader(): headerInterface {
+        return this.header.getHeader()
+    }
 }
 
 export class Choice extends Node {
     switch: Switch
     caseArr: Array<Case>
-    constructor() {
+    constructor(data: string) {
         super()
-        this.switch = new Switch()
-        this.caseArr = []
+        this.switch = new Switch(data)
+        this.caseArr = [new Case('c1'), new Case('c2')]
     }
     calc(x: number, y: number): Point {
         this.x = x
         this.y = y
 
         const switchSize = this.switch.calc(x, y)
-        // y = y + b + lDis
 
         let prevOffsetX = 0
         let maxY = 0
@@ -88,6 +94,8 @@ export class Choice extends Node {
                 const tb = this.caseArr[i]
                 drawLine(ctx, ta.x + a, ta.y + b / 2, tb.x, tb.y + b / 2)
             }
+            clickableCasePluses.push(new ClickableCasePlus(this.caseArr, i, 'left'))
+            clickableCasePluses.push(new ClickableCasePlus(this.caseArr, i, 'right'))
         }
     }
 
@@ -98,5 +106,9 @@ export class Choice extends Node {
         cppProg += '}'
 
         return cppProg
+    }
+
+    getHeader(): headerInterface {
+        return this.switch.getHeader()
     }
 }

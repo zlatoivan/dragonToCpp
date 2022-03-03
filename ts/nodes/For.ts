@@ -1,19 +1,19 @@
-import {addTabs, Node, Point} from "./Node";
+import {addTabs, headerInterface, Node, Point} from "./Node";
 import {ForClose, ForOpen} from "./SimpleIcons";
 import {a, lDis} from "../consts";
 import {Body} from "./Body";
-import {drawLineBetween} from "../drawing";
+import {drawLineBetween} from "../drawing_simple";
 
 export class For extends Node {
     forOpen: ForOpen
     body: Body
     forClose: ForClose
 
-    constructor() {
+    constructor(data: string) {
         super()
-        this.forOpen = new ForOpen()
+        this.forOpen = new ForOpen(data)
         this.body = new Body()
-        this.forClose = new ForClose()
+        this.forClose = new ForClose('')
     }
     calc(x: number, y: number): Point {
         this.x = x
@@ -47,5 +47,8 @@ export class For extends Node {
         return 'for (' + this.forOpen.convToCpp() + ') {\n' +
                     addTabs(this.body.convToCpp()) +
                 '}'
+    }
+    getHeader(): headerInterface {
+        return this.forOpen.getHeader()
     }
 }
