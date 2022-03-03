@@ -11,7 +11,7 @@ const ctx = canvas.getContext('2d')
 const w = canvas.width
 const h = canvas.height
 
-let program = new Program()
+const program = new Program()
 let selectedIcon: ClickableIcon
 export let clickableIcons: Array<ClickableIcon>
 export let clickableStandardPluses: Array<ClickableStandardPlus>
