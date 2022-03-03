@@ -12,7 +12,7 @@ export function initProgram(program: Program) {
     program.end = new End('End')
 }
 
-export function initProgramExample(program: Program    ) {
+export function initProgramExample(program: Program) {
     // Action 1
     const action1 = new Action('int a = 1;')
     const actionFor = new Action('a = a * a;')
